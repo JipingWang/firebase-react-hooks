@@ -20,7 +20,7 @@ class Firebase {
 		this.db = app.firestore()
 	}
 
-	login(email, password) {
+	login(email: string, password: string) {
 		return this.auth.signInWithEmailAndPassword(email, password)
 	}
 
@@ -28,14 +28,14 @@ class Firebase {
 		return this.auth.signOut()
 	}
 
-	async register(name, email, password) {
+	async register(name: string, email: string, password: string) {
 		await this.auth.createUserWithEmailAndPassword(email, password)
-		return this.auth.currentUser.updateProfile({
+		return this.auth.currentUser!.updateProfile({
 			displayName: name
 		})
 	}
 
-	addQuote(quote) {
+	addQuote(quote: any) { //to-do
 		if(!this.auth.currentUser) {
 			return alert('Not authorized')
 		}
@@ -46,7 +46,7 @@ class Firebase {
 	}
 
 	isInitialized() {
-		return new Promise(resolve => {
+		return new Promise((resolve:any) => { //to-do
 			this.auth.onAuthStateChanged(resolve)
 		})
 	}
@@ -56,7 +56,7 @@ class Firebase {
 	}
 
 	async getCurrentUserQuote() {
-		const quote = await this.db.doc(`users_codedamn_video/${this.auth.currentUser.uid}`).get()
+		const quote = await this.db.doc(`users_codedamn_video/${this.auth.currentUser!.uid}`).get() //todo
 		return quote.get('quote')
 	}
 }
