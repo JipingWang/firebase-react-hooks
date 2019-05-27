@@ -11,6 +11,13 @@
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1"
   },
+  "devDependencies": {
+    "@types/react":"16.8.18",
+    "@types/react-dom":"16.8.4",
+    "@types/react-router":"5.0.1",
+    "@types/react-router-dom":"4.3.3",
+    "@types/firebase": "3.2.1"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
